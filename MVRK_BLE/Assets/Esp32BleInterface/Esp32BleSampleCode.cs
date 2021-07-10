@@ -12,8 +12,10 @@ public class Esp32BleSampleCode : MonoBehaviour
     
     private Esp32BleLib m_Esp32BleLib;
     [SerializeField] private Material testMaterial;
+    [SerializeField] GameObject firstObject, secondObject;
 
-    public btle_controller bob;
+    float[] sOne = new float[3];
+    float[] sTwo = new float[3];
     void Start()
     {
 
@@ -30,7 +32,7 @@ public class Esp32BleSampleCode : MonoBehaviour
     {
         string strbuf;
 
-        float[] boardData = new float[5];
+        float[] boardData = new float[8];
         byte[] data;
 
         //UnityEngine.Debug.LogWarning("Update");
@@ -50,19 +52,15 @@ public class Esp32BleSampleCode : MonoBehaviour
         string text = System.Text.Encoding.UTF8.GetString(data);
         UnityEngine.Debug.LogWarning(" Read: " + text);
         string[] arr = text.Split(',');
-        boardData[0] = float.Parse(arr[0]);
-        boardData[1] = float.Parse(arr[1]);
-        boardData[2] = float.Parse(arr[2]);
-        boardData[3] = float.Parse(arr[3]);
-        boardData[4] = float.Parse(arr[4]);
+        sOne[0] = float.Parse(arr[0]);
+        sOne[1] = float.Parse(arr[1]);
+        sOne[2] = float.Parse(arr[2]);
+        sTwo[0] = float.Parse(arr[3]);
+        sTwo[1] = float.Parse(arr[4]);
+        sTwo[2] = float.Parse(arr[5]);
+        aState = (int)float.Parse(arr[6]);
+        bState = (int)float.Parse(arr[7]);
 
-
-        accelz = boardData[0] * -1;
-        accely = boardData[1];
-        accelx = boardData[2] * -1;
-
-        aState = (int)boardData[3];
-        bState = (int)boardData[4];
 
         if(aState == 1)
         {
@@ -74,7 +72,8 @@ public class Esp32BleSampleCode : MonoBehaviour
             testMaterial.color = Color.blue;
         }
 
-        transform.rotation = Quaternion.AngleAxis(accelx, Vector3.up) * Quaternion.AngleAxis(accely, Vector3.right) * Quaternion.AngleAxis(accelz, Vector3.forward);
+        firstObject.transform.rotation = Quaternion.AngleAxis(sOne[1], Vector3.up) * Quaternion.AngleAxis(sOne[0], Vector3.right) * Quaternion.AngleAxis(sOne[2], Vector3.forward);
+        secondObject.transform.rotation = Quaternion.AngleAxis(sTwo[1], Vector3.up) * Quaternion.AngleAxis(sTwo[0], Vector3.right) * Quaternion.AngleAxis(sTwo[2], Vector3.forward);
     }
     
     private void OnApplicationQuit()
