@@ -1,0 +1,52 @@
+{
+    "name": "Gamepad Controls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "ee2a0427-2ad3-4a9f-9e49-7b41dabe202e",
+            "actions": [
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "3d62ec70-f0ef-4855-b447-728aee820c13",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Trigger",
+                    "type": "Button",
+                    "id": "a9ace713-8b38-4ca1-aa6d-871812d7571a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a976ddfe-836f-4ad4-a437-0c792850abf0",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33777e14-1346-4d68-a3eb-9eda3661fc35",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
